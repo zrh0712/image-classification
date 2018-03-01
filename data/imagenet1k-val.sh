@@ -33,7 +33,7 @@ tar -xf ILSVRC2012_img_val.tar -C val
 wget http://data.mxnet.io/models/imagenet/resnet/val.lst -O imagenet1k-val.lst
 
 CUR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-MX_DIR=${CUR_DIR}/../../../
+MX_DIR=${CUR_DIR}/../
 
 python ${CUR_DIR}/../../../tools/im2rec.py --resize 256 --quality 90 --num-thread 16 imagenet1k-val val/
 
