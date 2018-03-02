@@ -1,0 +1,47 @@
+--------------------------------------------------------------------------------
+Arguments submitted:
+batch-size          = 128
+data-dev            = /Users/zhuriheng/Qiniu/projects/Kaels-toolbox-master/img-cls/train/data/cifar10_val.rec
+data-train          = /Users/zhuriheng/Qiniu/projects/Kaels-toolbox-master/img-cls/train/data/cifar10_train.rec
+disp-batches        = 20
+disp-lr             = False
+dropout             = 0
+finetune            = False
+gpus                = None
+help                = False
+img-width           = 28
+kv-store            = device
+load-epoch          = 0
+log-lv              = INFO
+log-mode            = w
+lr                  = 0.01
+lr-factor           = 0.1
+lr-step-epochs      = 20,40,60,80
+mean                = 123.68,116.779,103.939
+metrics             = accuracy
+model-prefix        = None
+momentum            = 0.9
+network             = alexnet
+num-classes         = 10
+num-epochs          = 8
+num-groups          = 32
+num-layers          = 0
+num-samples         = 50000
+optimizer           = sgd
+pretrained-model    = /Users/zhuriheng/Qiniu/projects/Kaels-toolbox-master/img-cls/train/model/resnet-50
+resize              = -1
+resize-scale        = 1,1
+resume              = False
+save-json           = False
+std                 = 58.395,57.12,57.375
+test-io             = False
+threshold           = None
+top-k               = 0
+version             = False
+weight-decay        = 0.0005
+<log>               = True
+--------------------------------------------------------------------------------
+2018-03-02 17:45:00,929 INFO: Start training job...
+2018-03-02 17:45:00,930 INFO: MXNet version: 1.0.1
+2018-03-02 17:45:00,930 INFO: Input normalization params: mean_rgb [123.68, 116.779, 103.939], std_rgb [58.395, 57.12, 57.375]
+2018-03-02 17:45:01,247 INFO: Data iters created successfully
