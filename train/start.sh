@@ -7,6 +7,7 @@ cd ..
 
 echo "downloading example dataset cifar10"
 mkdir -p data/
+cd data/
 wget http://data.mxnet.io/data/cifar10/cifar10_train.rec
 wget http://data.mxnet.io/data/cifar10/cifar10_val.rec
 
