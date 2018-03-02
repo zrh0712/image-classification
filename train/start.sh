@@ -11,5 +11,5 @@ cd data/
 wget http://data.mxnet.io/data/cifar10/cifar10_train.rec
 wget http://data.mxnet.io/data/cifar10/cifar10_val.rec
 
-echo "start to run training script"
-python mxnet_train.py log.log -f -s 
+# echo "start to run training script"
+# python mxnet_train.py log.log -f -s --gpus 0,1,2,3,4,5,6,7
