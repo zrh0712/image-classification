@@ -90,7 +90,7 @@ def _init_():
         --kv-store=str              key-value store type [default: device]
         --network=str               net architecture [default: alexnet]
         --num-layers=int            number of layers in the neural network, required by some networks such as resnet [default: 0]
-        --pretrained-model=str      pre-trained model path [default: /Users/zhuriheng/Qiniu/projects/Kaels-toolbox-master/img-cls/train/model/resnet-50]
+        --pretrained-model=str      pre-trained model path [default: model/resnet-50]
         --load-epoch=int            load the model on an epoch using the model-load-prefix [default: 0]
         --num-classes=int           number of classes [default: 10]
         --num-samples=int           number of samples in training data [default: 50000]
