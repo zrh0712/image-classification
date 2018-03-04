@@ -88,7 +88,7 @@ def _init_():
         --threshold=flt             threshold of training result warning, no warning by default
         --gpus=lst                  list of gpus to run, e.g. 0 or 0,2,5 (mxnet will use cpu by default)
         --kv-store=str              key-value store type [default: device]
-        --network=str               net architecture [default: alexnet]
+        --network=str               net architecture [default: resnet]
         --num-layers=int            number of layers in the neural network, required by some networks such as resnet [default: 0]
         --pretrained-model=str      pre-trained model path [default: model/resnet-50]
         --load-epoch=int            load the model on an epoch using the model-load-prefix [default: 0]
