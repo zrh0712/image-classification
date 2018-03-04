@@ -11,5 +11,8 @@ cd data/
 wget http://data.mxnet.io/data/cifar10/cifar10_train.rec
 wget http://data.mxnet.io/data/cifar10/cifar10_val.rec
 
+echo "creating log file folder"
+mkdir -p log/
+
 # echo "start to run training script"
-# python mxnet_train.py log.log -f -s --gpus 0,1,2,3,4,5,6,7
+# nohup python mxnet_train.py log/cifar10_0304_1331.log -f --gpus 0,1,2,3  --batch-size 512  --network resnet-50 --num-epochs 20 --model-prefix /workspace/run/master/image-classification/train/model/my_model &
