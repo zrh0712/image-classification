@@ -9,8 +9,8 @@ prefix = 'resnet18-priv'
 
 gpu_mode = True
 gpu_id = 0
-data_root = '~/Database/ILSVRC2012'
-val_file = 'ILSVRC2012_val.txt'
+data_root = '/workspace/data/val/cache'
+val_file = 'data.rec'
 save_log = 'log{}.txt'.format(datetime.datetime.now().strftime('%Y%m%d%H%M%S'))
 class_num = 1000
 base_size = 256
@@ -41,11 +41,29 @@ mod.set_params(arg_params, aux_params, allow_missing=True)
 def eval_batch():
     eval_images = []
     ground_truth = []
-    f = open(val_file, 'r')
-    for i in f:
-        eval_images.append(i.strip().split(' ')[0])
-        ground_truth.append(int(i.strip().split(' ')[1]))
-    f.close()
+
+    data_iter = mx.io.ImageRecordIter(
+    path_imgrec=data_root + '/' + val_file, # the target record file
+    data_shape=(3, 256, 256), # output data shape. An 227x227 region will be cropped from the original image.
+    batch_size=batch_size # number of samples per batch
+    # ... you can add more augumentation options as defined in ImageRecordIter.
+    )
+    data_iter.reset()
+
+    eval_images = []
+    ground_truth = []
+    for batch in data_iter:
+        arr = batch.data[0]
+        img = arr[0].astype(np.uint8).transpose((1,2,0))
+        eval_images.append(img.asnumpy())
+        label = batch.label[0].asnumpy()[0]
+        ground_truth.append(label)
+
+    # f = open(val_file, 'r')
+    # for i in f:
+    #     eval_images.append(i.strip().split(' ')[0])
+    #     ground_truth.append(int(i.strip().split(' ')[1]))
+    # f.close()
 
     skip_num = 0
     eval_len = len(eval_images)
@@ -55,9 +73,11 @@ def eval_batch():
         all_score_map = np.zeros((eval_len - skip_num, class_num), dtype=np.float32)
     start_time = datetime.datetime.now()
     for i in xrange(eval_len - skip_num):
-        _img = cv2.imread(data_root + eval_images[i + skip_num], 1)
+        # _img = cv2.imread(data_root + eval_images[i + skip_num], 1)
+        #
+        # _img = cv2.cvtColor(_img, cv2.COLOR_BGR2RGB)
 
-        _img = cv2.cvtColor(_img, cv2.COLOR_BGR2RGB)
+        _img = eval_len[i + skip_num]
         _img = cv2.resize(_img, (int(_img.shape[1] * base_size / min(_img.shape[:2])),
                                  int(_img.shape[0] * base_size / min(_img.shape[:2])))
                           )
